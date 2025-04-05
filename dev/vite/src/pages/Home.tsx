@@ -6,11 +6,15 @@ import { useState } from "react";
 import viteLogo from "/vite.svg";
 import mainBackground from "../assets/Home/mainBackground.png";
 import reactLogo from "../assets/react.svg";
+import { Top } from "../text/Text";
 
 const Home = () => {
 	const [count, setCount] = useState<number>(0);
 	return (
 		<>
+			<div>
+				<h1>{Top.title}</h1>
+			</div>
 			<div>
 				<a href="https://vite.dev" target="_blank" rel="noreferrer">
 					<img src={viteLogo} className="logo" alt="Vite logo" />
