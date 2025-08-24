@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* 位置 指定 */
+.headerCentencePosition{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.mainPosition {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/* ----- */
+
+.mainbg{
+    width: 700px;
+}
+
+.mainBsize {
+    width: 100%;
+    height: auto;
+}
+
+.contentName {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#leftest {
+    margin-left: 10px;
+}

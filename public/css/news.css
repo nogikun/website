@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/* 表示 設定 */
+:root {
+    --main-text: #333;
+    --main-bg: #fff;
+
+    --btn-bg: #e0e0e0;
+    --menu-bg: #f3f3f3;
+
+    /* add */
+    --labelforNEWS: #f4f4f4;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-text: #ddd;
+        --main-bg: #000;
+
+        --btn-bg: #4e4e4e;
+        --menu-bg: #222222;
+
+        /* add */
+        --labelforNEWS: rgb(66, 66, 66);
+        
+    }
+}
+
+.menu {
+    max-width: 600px;
+
+    margin-bottom: 12px;
+}
+
+.menu a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+label {
+    display: block;
+    margin: 0 0 4px 0;
+    padding: 15px;
+    line-height: 1;
+    color: #fff;
+    background: var(--labelforNEWS);
+    cursor: pointer;
+
+    border-radius: 10px;
+}
+
+input {
+    display: none;
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+    background: var(--labelforNEWS);
+    list-style: none;
+    
+    border-radius: 10px;
+}
+
+.menu p{
+    padding: 0 5%;
+}
+
+.menu .NEWScontent {
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.menu .NEWScontent a {
+    color: rgb(0, 146, 102);
+    text-decoration: none;
+    display: inline;
+    padding: 3px;
+}
+
+label p {
+    line-height: auto;
+}
+
+.centence{
+    display: inline;
+}
+
+#menu_bar01:checked~#links01 .NEWScontent,
+#menu_bar02:checked~#links02 .NEWScontent {
+    height: auto;
+    opacity: 1;
+}

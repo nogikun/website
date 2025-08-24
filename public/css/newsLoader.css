@@ -1,0 +1,62 @@
+.ledText {
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+    padding: 0;
+    color: #3d3d3d;
+    font-size: 15px;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+/* CSS3アニメーションでスクロール */
+.ledText span {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    -webkit-animation-name: marquee;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 15s;
+    -moz-animation-name: marquee;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-duration: 15s;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 20s;
+}
+
+@-webkit-keyframes marquee {
+    from {
+        -webkit-transform: translate(0%);
+    }
+
+    99%,
+    to {
+        -webkit-transform: translate(-100%);
+    }
+}
+
+@-moz-keyframes marquee {
+    from {
+        -moz-transform: translate(0%);
+    }
+
+    99%,
+    to {
+        -moz-transform: translate(-100%);
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translate(0%);
+    }
+
+    99%,
+    to {
+        transform: translate(-100%);
+    }
+}

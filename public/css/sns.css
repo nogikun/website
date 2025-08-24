@@ -1,0 +1,28 @@
+.margin_sns{
+    margin-left: 7%;
+}
+
+
+.snsIcon_size{
+    width: 100px;
+    height: auto;
+
+    border-radius: 50%;
+    margin-left: 3%;
+}
+
+.twitter-timeline{
+    height: 500px;
+}
+
+
+/* 動的 */
+/* .mainview{
+    opacity: 0;
+    width: 0%;
+}
+
+.mainview {
+    opacity: 1;
+    width: 100%;
+} */

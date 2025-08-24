@@ -1,0 +1,27 @@
+/* Import original CSS files */
+@import url('/css/base.css');
+@import url('/css/fonts.css');
+@import url('/css/index.css');
+@import url('/css/menu.css');
+@import url('/css/newsLoader.css');
+@import url('/css/works.css');
+@import url('/css/sns.css');
+@import url('/css/news.css');
+
+/* Reset some default React styles to work with original styles */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Keep some useful Vite defaults but override conflicting styles */
+button {
+  cursor: pointer;
+}
