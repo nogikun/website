@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -11,6 +11,22 @@ const Header: React.FC = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  // Apply z-index styles based on menu state
+  useEffect(() => {
+    const gNav = document.getElementById('g-nav');
+    const gNavList = document.getElementById('g-nav-list');
+    
+    if (gNav && gNavList) {
+      if (isMenuOpen) {
+        gNav.style.zIndex = '999';
+        gNavList.style.zIndex = '999';
+      } else {
+        gNav.style.zIndex = '-1';
+        gNavList.style.zIndex = '-1';
+      }
+    }
+  }, [isMenuOpen]);
 
   return (
     <div className="importMainFont">
@@ -38,7 +54,7 @@ const Header: React.FC = () => {
 
       {/* ハンバーガーメニューボタン */}
       <div 
-        className={`openbtn1 ${isMenuOpen ? 'active' : ''}`}
+        className={`openbtn1 ${isMenuOpen ? 'active openMenu' : ''}`}
         onClick={toggleMenu}
       >
         <span></span>
@@ -48,40 +64,40 @@ const Header: React.FC = () => {
 
       {/* ナビゲーションメニュー */}
       <nav id="g-nav" className={isMenuOpen ? 'panelactive' : ''}>
-        <div id="g-nav-list importMainFont">
+        <div id="g-nav-list" className="importMainFont">
           <ul>
             <li>
-              <Link className="url-list closeURL" to="/" onClick={closeMenu}>
+              <Link className={`url-list ${!isMenuOpen ? 'closeURL' : ''}`} to="/" onClick={closeMenu}>
                 <div className="p">HOME</div>
               </Link>
             </li>
             <li>
-              <Link className="url-list closeURL" to="/works" onClick={closeMenu}>
+              <Link className={`url-list ${!isMenuOpen ? 'closeURL' : ''}`} to="/works" onClick={closeMenu}>
                 <div className="p">作品</div>
               </Link>
             </li>
             <li>
-              <Link className="url-list closeURL" to="/sns" onClick={closeMenu}>
+              <Link className={`url-list ${!isMenuOpen ? 'closeURL' : ''}`} to="/sns" onClick={closeMenu}>
                 <div className="p">SNS</div>
               </Link>
             </li>
             <li>
-              <a className="url-list closeURL" href="https://twpf.jp/nogikun_" onClick={closeMenu}>
+              <a className={`url-list ${!isMenuOpen ? 'closeURL' : ''}`} href="https://twpf.jp/nogikun_" onClick={closeMenu}>
                 <div className="p">ツイフィール</div>
               </a>
             </li>
             <li>
-              <a className="url-list closeURL" href="https://onogikun.hatenablog.com/" onClick={closeMenu}>
+              <a className={`url-list ${!isMenuOpen ? 'closeURL' : ''}`} href="https://onogikun.hatenablog.com/" onClick={closeMenu}>
                 <div className="p">Blog</div>
               </a>
             </li>
             <li>
-              <Link className="url-list closeURL" to="/filetree" onClick={closeMenu}>
+              <Link className={`url-list ${!isMenuOpen ? 'closeURL' : ''}`} to="/filetree" onClick={closeMenu}>
                 <div className="p">file tree</div>
               </Link>
             </li>
             <li>
-              <Link className="url-list closeURL" to="/en" onClick={closeMenu}>
+              <Link className={`url-list ${!isMenuOpen ? 'closeURL' : ''}`} to="/en" onClick={closeMenu}>
                 <div className="p">en</div>
               </Link>
             </li>
