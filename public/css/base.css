@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+/* 表示 設定 */
+:root {
+    --main-text: #333;
+    --main-bg: #fff;
+
+    --btn-bg: #e0e0e0;
+    --menu-bg: #f3f3f3;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-text: #ddd;
+        --main-bg: #000;
+        
+        --btn-bg: #4e4e4e;
+        --menu-bg: #222222;
+    }
+}
+
+/* 文字色 */
+h2,h3,span,p,.p{
+   color: var(--main-text);
+}
+
+a{
+    color: rgb(0, 146, 102);
+    text-decoration: none;
+}
+
+/* 背景色 */
+body{
+    background-color: var(--main-bg);
+}
+
+/* 1,横 */
+
+.flex {
+    display: flex;
+}
+
+
+/* 2,中央揃え */
+
+.p-center {
+    text-align: center;
+}
+.p-left{
+    text-align: left;
+}
+.p-right{
+    text-align: right;
+}
+
+
+/* ----- */
+
+/* 要素 */
+.block{
+    display: block;
+}
+
+.center{
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.not-urlline{
+    text-decoration: none;
+    color: var(--main-text);
+}
+
+/* URL */
+.closeURL{
+    pointer-events: none;
+}
+
+/*ページタイトル*/
+.page-title{
+    border-radius: 10px;
+    width: 700px;
+    height: auto;
+}
+
+/* 太字 */
+.bold{
+    font-weight: bold;
+}
+
+/* 行間 */
+.line-Height_S{
+    line-height: 10px;
+}
+
+/* スペース */
+.space{
+    width: auto;
+    height: 15px;
+}
+
+/* サブタイトル */
+
+.sub_title_flame {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.sub_title {
+    line-height: 30px;
+
+    font-size: 30px;
+    text-decoration: bold;
+}
