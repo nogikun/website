@@ -5,7 +5,7 @@
     --main-text: #333;
     --main-bg: #fff;
 
-    --btn-bg: #e0e0e0;
+    --btn-bg: #f3f3f3;
     --menu-bg: #f3f3f3;
 }
 
@@ -14,7 +14,7 @@
         --main-text: #ddd;
         --main-bg: #000;
         
-        --btn-bg: #4e4e4e;
+        --btn-bg: #222222;
         --menu-bg: #222222;
     }
 }
