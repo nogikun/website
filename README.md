@@ -108,7 +108,15 @@ React Routerへの変更後は、サイトの成果物のHTMLを`web/dist/index.
 
 新サイトはReact Routerの`BrowserRouter`で8ページを表示するSPAです。[公式のDeclarative構成](https://reactrouter.com/start/declarative/installation)に沿ってVite + Reactへ追加しています。ブラウザで本文を描画し、ビルド時に本文をHTMLへ事前出力する構成ではありません。`web/`のページ別HTMLは削除し、旧サイトのHTMLは`legacy/`に保存したままです。
 
-jQueryのメニューと画像切り替えはReactの状態管理に移しました。ニュースは標準の`details`を使います。配信とフォームは「外部コンテンツを表示」から読み込み、SNSのタイムラインは元のアカウントへのリンクにしています。ローカル評価用サイトに旧Google Analyticsは組み込んでいません。
+jQueryのメニューと画像切り替えはReactの状態管理に移しました。ニュースは標準の`details`を使います。配信とフォームは「外部コンテンツを表示」から読み込み、SNSのタイムラインは元のアカウントへのリンクにしています。
+
+## Google Analytics
+
+旧サイトと同じGA4測定ID `G-YPELGCKR6R`を使用します。本番ビルドを`nogikun.com`または`www.nogikun.com`で表示した場合だけGoogleタグを非同期で読み込みます。開発サーバー、ローカルプレビュー、別ドメインのプレビュー、Storybookでは送信しません。ReactのStrictModeでも初期化は一度だけです。
+
+初回表示はGoogleタグの標準のページビュー計測、React Routerのページ移動・戻る／進むはGA4の拡張計測に任せます。[Google公式のSPA計測手順](https://developers.google.com/analytics/devguides/collection/ga4/single-page-applications)に従い、GA管理画面の「管理 → データストリーム → ウェブ → 拡張計測機能 → ページビュー → 詳細設定」で「ブラウザの履歴イベントに基づくページの変更」を有効にしてください。現在の管理画面の設定は未確認です。自前の`page_view`イベントは追加せず、二重送信を避けています。
+
+公開後はGA4のリアルタイムレポートまたはDebugViewで、初回表示とページ移動が届くことを確認してください。広告ブロッカーや通信制限でGoogleタグが取得できない場合、サイトは表示できますが計測は行われません。テストでは本番GAへの送信を行わず、管理画面での受信確認はマージ後の作業です。
 
 ## 公開作業
 
