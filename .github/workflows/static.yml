@@ -18,6 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      index-sha256: ${{ steps.pages-check.outputs.index-sha256 }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,10 +39,14 @@ jobs:
           # ponytail: direct routes render via 404; prerender if HTTP 200 is required.
           cp dist/index.html dist/404.html
       - name: Setup Pages
-        if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
+      - name: Check Pages artifact
+        id: pages-check
+        working-directory: web
+        run: |
+          npm run check:pages
+          echo "index-sha256=$(sha256sum dist/index.html | cut -d ' ' -f 1)" >> "$GITHUB_OUTPUT"
       - name: Upload artifact
-        if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist
@@ -54,7 +60,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Checkout deployment checks
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Check deployed site
+        working-directory: web
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_INDEX_SHA256: ${{ needs.build.outputs.index-sha256 }}
+        run: node scripts/check-pages.mjs --deployed

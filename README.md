@@ -97,6 +97,7 @@ npm run build-storybook
 ```
 
 - `npm test`: Node.js標準のテスト。日本語既定・URL保持・フォールバック・i18nextインスタンスの独立性・翻訳キーと埋め込み変数を確認します。Node.js 22.15ではType Strippingの実験的機能に関する警告が出ます。
+- Pages検証のテストも実行し、公開用成果物の不足、古いHTMLの配信、アセットの404、直接アクセス時のフォールバック不一致を検出できることを確認します。ローカルHTTPサーバーによるテストで、本番への接続は行いません。
 - `npm run build`: コンポーネント・Story・設定のTypeScriptチェックとサイトビルド。成果物は`web/dist/`です。
 - `npm run build-storybook`: Storybookビルド。成果物は`web/storybook-static/`です。
 - `npm run preview`: サイトのビルド成果物を<http://127.0.0.1:4173/>で確認します。
@@ -113,11 +114,13 @@ jQueryのメニューと画像切り替えはReactの状態管理に移しまし
 
 `.github/workflows/static.yml`で検証と公開を行います。GitHub Pagesの公開元はGitHub Actions、独自ドメインは`nogikun.com`です。独自ドメインのルートで配信するため、Viteの`base`は既定の`/`、React Routerは`BrowserRouter`を使います。
 
-- `main`向けのPR: Node.js 22で`npm ci`、`npm test`、サイトとStorybookのビルドを実行します。公開は行いません。
-- PRを`main`へマージ: `main`へのpushを契機に同じ検証を実行し、成功したら`web/dist/`だけをGitHub Pagesへ公開します。`legacy/`とStorybookは公開対象に含みません。
+- `main`向けのPR: Node.js 22で`npm ci`、`npm test`、サイトとStorybookのビルド、Pages設定の読み取り、公開用成果物の検証とアップロードを実行します。`deploy`ジョブはスキップされ、公開は行いません。PRの成功は本番デプロイの成功を意味しません。
+- PRを`main`へマージ: `main`へのpushを契機に同じ検証を実行し、成功したら`web/dist/`だけをGitHub Pagesへ公開します。`legacy/`とStorybookは公開対象に含みません。続けて公開URLをHTTPで確認し、配信HTMLが今回のビルドと一致すること、参照するJS・CSS・faviconが取得できること、各ページと旧URLの直接アクセスに同じSPA用HTMLが返ることを検証します。配信の反映待ちで失敗した場合は15秒間隔で最大6回試し、成功しなければ`deploy`ジョブが失敗します。この検証ではブラウザによるReactの描画・操作は確認しません。
 - 手動実行: Actionsからこのworkflowを実行できます。公開するのは`main`を選んだ場合だけです。
 
 workflowはビルドした`index.html`を`404.html`にもコピーします。GitHub Pagesで`/works`などへ直接アクセスした場合もReactがページを表示しますが、HTTPステータスは404です。検索エンジン向けに各URLでHTTP 200が必要になった場合は、ページごとのHTML出力を追加してください。言語指定の`?lang=en`とページ内の`#gallery`はそのまま使用します。
+
+公開用成果物の検証では、`index.html`と`404.html`の一致、ビルド済みJS・CSSへの参照、HTMLが参照するローカルファイルの存在と内容が空でないことを確認します。ローカルではサイトをビルドした後、PowerShellで`Copy-Item dist/index.html dist/404.html`を実行してから`npm run check:pages`で確認できます。
 
 通常の更新は`web/src/`や`web/public/`を編集し、PRの検証結果を確認してから`main`へマージします。初回の移行PRがマージされるまでは旧サイトが公開されます。CloudflareやDNSの設定変更は不要です。
 
