@@ -1,0 +1,14 @@
+@charset "utf-8";
+.iframeResponsive {
+    position: relative;
+    width: 100%;
+    padding: calc(720 / 1280 * 100%) 0 0;
+}
+
+.iframeResponsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

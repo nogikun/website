@@ -1,0 +1,26 @@
+{
+  "site": { "name": "Illustration", "byline": "by NOGI", "description": "Illustrations and artwork by NOGI." },
+  "nav": { "home": "HOME", "works": "Artworks", "news": "News", "sns": "Social media", "lives": "Live drawing", "requestedworks": "Commissioned works", "ask": "Contact", "tree": "Pages", "profile": "Profile", "blog": "Blog" },
+  "menu": { "open": "Open menu", "close": "Close menu", "label": "Site menu" },
+  "language": { "label": "Display language", "ja": "日本語", "en": "English" },
+  "home": {
+    "greeting": "Hello!!", "imageAlt": "The main illustration on NOGI's homepage",
+    "heading": "Introduction", "intro": "Let me introduce myself.", "hello": "Hello!",
+    "name": "My name is NOGI.", "study": "I'm a university student specializing in AI.",
+    "drawing": "I enjoy drawing", "social": "and usually share my work on X.", "gallery": "I'd also like to share my illustrations here.", "welcome": "Please enjoy your visit."
+  },
+  "gallery": { "label": "Artwork gallery", "select": "Show “{{title}}”", "imageUnavailable": "The image could not be loaded.", "empty": "No artwork yet.", "original": "View full-size image", "post": "View post on X", "pixiv": "View on Pixiv" },
+  "artwork": { "newYear": "Happy New Year", "fish": "🐟", "punched": "Punched for being bad", "blank": "＿＿＿", "namakubi": "namakubi.." },
+  "news": {
+    "updated": "[3/16] Website update", "updatedSummary": "The site design has been updated.",
+    "hello": "Hello! How are you?", "intro": "Here's what's changed.",
+    "homeDesign": "Adjusted the homepage design.", "titles": "Updated the page title designs.", "stream": "Added a live drawing page.", "fixes": "Fixed some issues.", "end": "That's all!",
+    "launched": "[3/5] Website preview launched", "first": "Hello, I'm NOGI.", "launch": "I launched a preview of “Illustration by NOGI” on March 5, 2022.", "purpose": "This website brings together the illustrations I've drawn.", "feedback": "If you'd like to suggest a new page, please send me a DM on X.", "dm": "DM on X", "edited": "Edited: {{date}}"
+  },
+  "sns": { "intro": "Here are my social media accounts.", "main": "Main account", "sub": "Second account", "timeline": "Timeline" },
+  "lives": { "service": "Streaming on TwitCasting", "watch": "Watch this stream on TwitCasting" },
+  "requestedworks": { "intro": "This page features commissioned artwork." },
+  "embed": { "load": "Show external content", "external": "Open original website", "placeholder": "You can display {{title}} here.", "formTitle": "Contact form", "liveTitle": "NOGI's live drawing" },
+  "button": { "sample": "Button", "primary": "Primary button", "secondary": "Secondary button" },
+  "notFound": { "title": "Page not found", "message": "Please check the URL." }
+}

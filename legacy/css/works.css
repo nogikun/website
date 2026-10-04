@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/* position */
+
+.otherIMGlist{
+    width: 170px;
+    height: auto;
+}
+
+/* size */
+.pickup-width{
+    width: 600px;
+}
+
+.pickupImage_size {
+    width: 100%;
+    height: auto;
+
+    border-radius: 10px;
+}
+
+.otherImage_size {
+    width: 80%;
+    height: auto;
+}
+
+.syousai{
+    width: 100%;
+    height: auto;
+}
+
+.button_size {
+    width: 100px;
+    height: 100px;
+}
+
+
+/* font size */
+
+.works_title {
+    font-size: 20px;
+}

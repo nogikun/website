@@ -1,0 +1,26 @@
+{
+  "site": { "name": "Illustration", "byline": "by NOGI", "description": "禾（のぎ）のイラストレーションと作品を紹介するサイトです。" },
+  "nav": { "home": "HOME", "works": "作品", "news": "NEWS", "sns": "SNS", "lives": "作業配信", "requestedworks": "依頼作品", "ask": "お問い合わせ", "tree": "ページ一覧", "profile": "Profile", "blog": "Blog" },
+  "menu": { "open": "メニューを開く", "close": "メニューを閉じる", "label": "サイトメニュー" },
+  "language": { "label": "表示言語", "ja": "日本語", "en": "English" },
+  "home": {
+    "greeting": "I'm NOGI !", "imageAlt": "禾のホームページのメインイラスト",
+    "heading": "はじめに", "intro": "まずここでは自己紹介をしたいと思います。", "hello": "こんにちは！",
+    "name": "私の名前は禾（のぎ）と申します。", "study": "現在、大学生でAIを専攻しています。",
+    "drawing": "絵を描くのが好きで、", "social": "普段はXに投稿しています。", "gallery": "また、ここでは自分の絵などを掲載できたらなと思います。", "welcome": "お手すきの際にどうぞ。"
+  },
+  "gallery": { "label": "作品ギャラリー", "select": "「{{title}}」を表示", "imageUnavailable": "画像を読み込めませんでした。", "empty": "作品はまだありません。", "original": "画像を原寸で見る", "post": "Xの投稿を見る", "pixiv": "Pixivで見る" },
+  "artwork": { "newYear": "謹賀新年", "fish": "🐟", "punched": "悪いから殴られた", "blank": "＿＿＿", "namakubi": "namakubi.." },
+  "news": {
+    "updated": "[3/16] 更新情報", "updatedSummary": "サイトのデザインを変更しました。",
+    "hello": "こんにちは、いかがお過ごしですか。", "intro": "今回は更新した内容をお伝えします。",
+    "homeDesign": "トップページのデザインを調整しました。", "titles": "各ページのタイトルのデザインを変更しました。", "stream": "新たに配信ページを作成しました。", "fixes": "一部の不具合を修正しました。", "end": "以上です！",
+    "launched": "[3/5] サイトを試験的に公開しました。", "first": "はじめまして、禾です。", "launch": "2022年3月5日より「Illustration by NOGI」というサイトを試験的に立ち上げました。", "purpose": "本サイトは僕の描いた絵をきれいにまとめるという趣旨で作成しております。", "feedback": "追加してほしいページなど、ご意見がありましたらXのDMへお寄せください。", "dm": "XのDM", "edited": "編集：{{date}}"
+  },
+  "sns": { "intro": "ここに自分のアカウントを並べておきます。", "main": "メインアカウント", "sub": "サブアカウント", "timeline": "タイムライン" },
+  "lives": { "service": "利用している配信サイト：TwitCasting", "watch": "この配信をツイキャスで見る" },
+  "requestedworks": { "intro": "ここでは依頼していただいた作品を載せています。" },
+  "embed": { "load": "外部コンテンツを表示", "external": "元のサイトで開く", "placeholder": "{{title}}を表示できます。", "formTitle": "お問い合わせフォーム", "liveTitle": "禾の作業配信" },
+  "button": { "sample": "ボタン", "primary": "メインボタン", "secondary": "サブボタン" },
+  "notFound": { "title": "ページが見つかりません", "message": "URLをご確認ください。" }
+}

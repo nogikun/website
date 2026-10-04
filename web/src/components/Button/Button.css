@@ -1,0 +1,11 @@
+.button {
+  font: inherit; font-weight: 700; border: 1px solid var(--border, #d5ddd7);
+  border-radius: 10px; cursor: pointer; padding: 0.7em 1.1em;
+}
+.button--primary { color: #fff; background: #007951; border-color: #007951; }
+.button--secondary { color: var(--main-text, #333); background: var(--btn-bg, #f3f3f3); }
+.button--small { font-size: 0.85rem; }
+.button--large { font-size: 1.2rem; }
+.button:hover:not(:disabled) { filter: brightness(0.94); }
+.button:disabled { opacity: 0.5; cursor: not-allowed; }
+.button:focus-visible { outline: 3px solid #009266; outline-offset: 3px; }
