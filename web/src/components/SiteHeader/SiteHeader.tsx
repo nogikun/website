@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { LanguageSwitcher, type LanguageSwitcherProps } from '../LanguageSwitcher/LanguageSwitcher';
 
-export interface NavItem { label: string; href: string }
+export interface NavItem { label: string; href: string; hidden?: boolean }
 export interface SiteHeaderProps extends LanguageSwitcherProps {
   items: NavItem[];
   homeHref: string;
@@ -34,7 +34,7 @@ export function SiteHeader({ items, homeHref, ...languageProps }: SiteHeaderProp
           <span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" />
         </button>
         <nav aria-label={t('menu.label')}><ul>{items.map((item) => (
-          <li key={item.href}>{item.href.startsWith('/')
+          <li key={item.href} hidden={item.hidden}>{item.href.startsWith('/')
             ? <Link to={item.href} onClick={() => setOpen(false)}>{item.label}</Link>
             : <a href={item.href} onClick={() => setOpen(false)}>{item.label}</a>}</li>
         ))}</ul></nav>

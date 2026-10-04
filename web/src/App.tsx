@@ -12,14 +12,15 @@ import { NewsPage } from './pages/NewsPage';
 import { SocialPage } from './pages/SocialPage';
 
 const pages = [
-  { id: 'home', path: '/', legacyPath: '/index.html' },
-  { id: 'works', path: '/works', legacyPath: '/works.html' },
-  { id: 'news', path: '/news', legacyPath: '/news.html' },
-  { id: 'sns', path: '/sns', legacyPath: '/sns.html' },
-  { id: 'lives', path: '/lives', legacyPath: '/lives.html' },
-  { id: 'requestedworks', path: '/requestedworks', legacyPath: '/requestedworks.html' },
-  { id: 'ask', path: '/ask', legacyPath: '/ask.html' },
-  { id: 'tree', path: '/pages', legacyPath: '/fileTree/fileTree.html' },
+  // hidden: true でメニューのみ非表示。ページのURLやページ一覧は残ります。
+  { id: 'home', path: '/', legacyPath: '/index.html', hidden: false },
+  { id: 'works', path: '/works', legacyPath: '/works.html', hidden: false },
+  { id: 'news', path: '/news', legacyPath: '/news.html', hidden: false },
+  { id: 'sns', path: '/sns', legacyPath: '/sns.html', hidden: false },
+  { id: 'lives', path: '/lives', legacyPath: '/lives.html', hidden: true },
+  { id: 'requestedworks', path: '/requestedworks', legacyPath: '/requestedworks.html', hidden: true },
+  { id: 'ask', path: '/ask', legacyPath: '/ask.html', hidden: true },
+  { id: 'tree', path: '/pages', legacyPath: '/fileTree/fileTree.html', hidden: false },
 ] as const;
 const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf85ZRMFTfF9l7uUT_edYCHxYr4ji17L-m20wAV5N89mZKrXQ/viewform?usp=sf_link';
 
@@ -31,7 +32,7 @@ export function App() {
   const language = languageFromUrl(new URL(currentUrl, window.location.origin));
   const page = pages.find((item) => matchPath(item.path, location.pathname) || matchPath(item.legacyPath, location.pathname));
   const title = page ? t(`nav.${page.id}`) : t('notFound.title');
-  const links = pages.map((item) => ({ href: pageHref(item.path, language), label: t(`nav.${item.id}`) }));
+  const links = pages.map((item) => ({ href: pageHref(item.path, language), label: t(`nav.${item.id}`), hidden: item.hidden }));
 
   useEffect(() => {
     void i18n.changeLanguage(language);
@@ -56,8 +57,8 @@ export function App() {
 
   return <>
     <SiteHeader homeHref={pageHref('/', language)} items={[...links,
-      { label: t('nav.profile'), href: 'https://linktr.ee/nogikun' },
-      { label: t('nav.blog'), href: 'https://onogikun.hatenablog.com/' }]}
+      { label: t('nav.profile'), href: 'https://linktr.ee/nogikun', hidden: false },
+      { label: t('nav.blog'), href: 'https://onogikun.hatenablog.com/', hidden: false }]}
       currentUrl={currentUrl} onLanguageChange={changeLanguage} />
     <main className="site-main">
       {page?.id !== 'home' && <h1 className="page-title">{title}</h1>}

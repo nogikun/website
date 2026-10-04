@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useTranslation } from 'react-i18next';
-import { expect, userEvent, within } from 'storybook/test';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 import { SiteHeader, type SiteHeaderProps } from './SiteHeader';
 
 const meta = {
@@ -34,5 +34,14 @@ export const Expanded: Story = {
     await userEvent.click(canvas.getByRole('button', { name: /メニューを開く|Open menu/ }));
     await expect(canvas.getByRole('dialog')).toHaveAttribute('open');
     await expect(canvas.getByRole('button', { name: /メニューを閉じる|Close menu/ })).toHaveAttribute('aria-expanded', 'true');
+  },
+};
+export const HiddenItems: Story = {
+  args: { items: [{ label: '作品', href: '/works' }, { label: 'NEWS', href: '/news', hidden: true }] },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole('button', { name: /メニューを開く|Open menu/ }));
+    await waitFor(() => expect(canvas.getByRole('link', { name: '作品' })).toBeVisible());
+    await expect(canvas.queryByRole('link', { name: 'NEWS' })).not.toBeInTheDocument();
   },
 };

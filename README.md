@@ -1,6 +1,6 @@
 # NOGI's Illustration Website
 
-旧HTMLサイトを参照用に保存し、React + Vite + Storybookへの移行をローカルで評価するプロジェクトです。
+旧HTMLサイトを参照用に保存し、React + Vite + Storybookで開発するイラストサイトです。GitHub Pagesで独自ドメインの運用を継続します。
 
 ## フォルダ
 
@@ -111,10 +111,14 @@ jQueryのメニューと画像切り替えはReactの状態管理に移しまし
 
 ## 公開作業
 
-この段階はローカル評価のみです。既存の`.github/workflows/static.yml`、GitHub Pages、Cloudflare、DNS設定は変更していません。コミット・push・デプロイも行っていません。
+`.github/workflows/static.yml`で検証と公開を行います。GitHub Pagesの公開元はGitHub Actions、独自ドメインは`nogikun.com`です。独自ドメインのルートで配信するため、Viteの`base`は既定の`/`、React Routerは`BrowserRouter`を使います。
 
-既存workflowは`main`へのpushでリポジトリ全体を公開する設定のままです。旧ファイルを`legacy/`へ移したため、公開を再開する前に新サイトのビルド成果物だけを対象にする設定へ変更する必要があります。
+- `main`向けのPR: Node.js 22で`npm ci`、`npm test`、サイトとStorybookのビルドを実行します。公開は行いません。
+- PRを`main`へマージ: `main`へのpushを契機に同じ検証を実行し、成功したら`web/dist/`だけをGitHub Pagesへ公開します。`legacy/`とStorybookは公開対象に含みません。
+- 手動実行: Actionsからこのworkflowを実行できます。公開するのは`main`を選んだ場合だけです。
 
-公開を再開する際は、`/works`などの直接アクセスでも`index.html`を返すSPAフォールバックを配信先で設定してください。Viteの開発サーバーとローカルプレビューでは動作を確認済みです。今回、配信先の設定変更は行っていません。
+workflowはビルドした`index.html`を`404.html`にもコピーします。GitHub Pagesで`/works`などへ直接アクセスした場合もReactがページを表示しますが、HTTPステータスは404です。検索エンジン向けに各URLでHTTP 200が必要になった場合は、ページごとのHTML出力を追加してください。言語指定の`?lang=en`とページ内の`#gallery`はそのまま使用します。
+
+通常の更新は`web/src/`や`web/public/`を編集し、PRの検証結果を確認してから`main`へマージします。初回の移行PRがマージされるまでは旧サイトが公開されます。CloudflareやDNSの設定変更は不要です。
 
 [Notion](https://www.notion.so/WEB-1977c4bfb3b18075a4a3f3783d7b7709?pvs=4) / [Figma](https://www.figma.com/design/l1ZthWLEGk9pkLHrQ3crd7/WEB?node-id=0-1&t=r45cnAqTgbF7nOsg-1)
